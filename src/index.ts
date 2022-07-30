@@ -7,7 +7,8 @@ import { getLastMusicService } from './factories/get-last-music-service-factory'
 console.log('Script is running...');
 
 const twiceADayCron = '1 10,22 * * *';
-cron.schedule(twiceADayCron, async () => {
+// cron.schedule(twiceADayCron, async () => {
+(async () => {
   try {
     const { access_token } = await getAccessTokenService.exec();
     const { artist, music } = await getLastMusicService.exec(access_token);
@@ -18,4 +19,5 @@ cron.schedule(twiceADayCron, async () => {
   } catch (e) {
     console.log(e);
   }
-});
+})();
+// });
