@@ -11,7 +11,7 @@ export default class UpdateReadmeService {
     const { sha, text } = await this.getCurrentReadmeData();
 
     const updatedText = text.replace(
-      /\{\{[^()]*\}\}/g,
+      /\{\{(.*?)\}\}/g,
       `{{ ${artist} - ${music} }}`,
     );
 
@@ -46,7 +46,7 @@ export default class UpdateReadmeService {
 
     return {
       sha,
-      text: Buffer.from(content, 'base64').toString('utf-8'),
+      text: Buffer.from(content, 'base64').toString('utf8'),
     };
   }
 }
